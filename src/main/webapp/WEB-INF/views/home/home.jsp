@@ -4,15 +4,16 @@
     <title>Home Page</title>
 </head>
 <body>
-<h1>Are you ready for the Game? </h1><br>
-<h1>Register!</h1>
-<form method="get" action="${pageContext.request.contextPath}/register">
-    <input type="hidden" name="regType" value="client"/>
-    <button type="submit">I AM A CLIENT</button>
+
+<h1>Register or Log in!</h1>
+<form method="get" action="${pageContext.request.contextPath}/register/businessRegistration">
+        <button type="submit">BUSINESS REGISTRATION</button>
 </form>
-<form method="get" action="${pageContext.request.contextPath}/register">
-    <input type="hidden" name="regType" value="business"/>
-    <button type="submit">I AM A BUSINESS</button>
+<form method="get" action="${pageContext.request.contextPath}/register/clientRegistration">
+        <button type="submit">CLIENT REGISTRATION</button>
+</form>
+<form method="get" action="${pageContext.request.contextPath}/login">
+        <button type="submit">LOG IN</button>
 </form>
 
 </body>

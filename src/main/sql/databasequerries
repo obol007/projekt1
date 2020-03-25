@@ -1,0 +1,1 @@
+create database <database_name> character set UTF8mb4 collate utf8mb4_bin

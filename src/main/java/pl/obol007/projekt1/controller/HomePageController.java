@@ -13,8 +13,8 @@ import java.security.Principal;
 public class HomePageController {
 
     @GetMapping
-    public String prepareHomePage(Model model, Principal principal){
-        //Co to jest principal ? Skad ma dane?
+    public String prepareHomePage(){
+
 //        String username = principal.getName();
 //        model.addAttribute("username", username);
 

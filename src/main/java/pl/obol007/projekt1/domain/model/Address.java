@@ -22,6 +22,7 @@ public class Address {
     @Column(name = "flat")
     String flatNumber;
     @Column(nullable = false)
+    //String regZipCode = (?:[^\d]|^)(\d{2}\-\d{3})(?:[^\d]|$);
     String zipcode;
     @Column(nullable = false)
     String city;

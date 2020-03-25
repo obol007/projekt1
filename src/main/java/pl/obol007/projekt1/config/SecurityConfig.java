@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT username, password, active FROM users " +
                         "WHERE username = ?")
                 .authoritiesByUsernameQuery("SELECT username, role FROM users " +
-                        //"ROLE_USER" jest wartoscia, nie kolumna
                         "WHERE username = ?");
     }
 
@@ -44,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 //konfigurujemy od szczegolu do ogolu (jak w try - catch)
                 .antMatchers("/").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/register/*").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/business").hasAuthority("BUSINESS")
                 .antMatchers("/client").hasAuthority("CLIENT")
@@ -57,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
 
                 //po zalogowaniu przechodzi na strone na ktora chcial wejsc
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/selectRole")
                 //po zalogowaniu trafiasz na strone glowna,
 //                .defaultSuccessUrl("/", true)
                 .and()

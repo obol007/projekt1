@@ -5,19 +5,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Business Registration</title>
+    <title>Client Registration</title>
 </head>
 <body>
-<h1>Business registration:</h1>
+<h1>Client registration:</h1>
 
-<form:form modelAttribute="data" method="post" action="/register">
-    <p>Nazwa użytkownika: <form:input path="username"/> <form:errors path="username"/> </p>
+<form:form modelAttribute="data" method="post" action="/register/clientRegistration">
+
+    <p>Username: <form:input path="username"/> <form:errors path="username"/> </p>
+    <p>Password: <form:password path="password"/> <form:errors path="password"/> </p>
+    <p>Name: <form:input path="firstName"/> <form:errors path="firstName"/> </p>
+    <p>Surname: <form:input path="lastName"/> <form:errors path="lastName"/> </p>
     <p>Email: <form:input path="email"/> <form:errors path="email"/> </p>
-    <p>Hasło: <form:password path="password"/> <form:errors path="password"/> </p>
-    <p>Imię: <form:input path="firstName"/> <form:errors path="firstName"/> </p>
-    <p>Nazwisko: <form:input path="lastName"/> <form:errors path="lastName"/> </p>
 
-    <p><button type="submit">Zarejestruj</button></p>
+    <p><button type="submit">Register</button></p>
     <security:csrfInput/>
 </form:form>
 

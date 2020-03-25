@@ -17,22 +17,30 @@ public class Business {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private final String role = "BUSINESS";
-    @Column(nullable = false, unique = true)
-    private String username;
+//    private final String role = "BUSINESS";
+//    @Column(nullable = false, unique = true)
+//    private String username;
     @Column(nullable = false, unique = true, name = "name")
     private String businessName;
+    @Column(nullable = false)
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private String password;
-    @Column(nullable = false)
-    private Boolean active = false;
+//    @Column(nullable = false)
+//    private String password;
+//    @Column(nullable = false)
+//    private Boolean active = false;
+    private Boolean visible = false;
     @Column(nullable = false, unique = true)
     @NIP
     private String nip;
     @Column(nullable = false)
     String category;
+
+    @OneToOne
+    private User user;
 
     @ManyToOne
     private Address address;

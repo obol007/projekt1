@@ -16,15 +16,16 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     private final String role = "CLIENT";
+
     @Column(nullable = false, name = "name")
     String firstName;
     @Column(nullable = false, name = "surname")
     String lastName;
-    @Column(nullable = false)
-    String username;
-    @Column(nullable = false)
     @Email
     String email;
+
+    @OneToOne
+    User user;
 
     @ManyToOne
     Address address;

@@ -1,7 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Login</title>
@@ -16,9 +17,10 @@
 </c:if>
 
 <form method="post" action="/login">
-    <p>Nazwa użytkownika: <input type="text" name="username"></p>
-    <p>Hasło: <input type="password" name="password"></p>
-    <p><button type="submit">Zaloguj</button> </p>
+    <p>Username: <input type="text" name="username"></p>
+    <p>Password: <input type="password" name="password"></p>
+    <p><button type="submit">Log in</button> </p>
+
 <%--    kazdy formularz, ktory wysyla dane musi zawierac ten tag--%>
     <security:csrfInput/>
 </form>

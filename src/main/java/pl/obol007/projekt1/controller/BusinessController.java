@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BusinessController {
 
     @GetMapping("/register")
-    public String register(){
-
+    public String register() {
         return "/business/businessRegistration";
+    }
+
+    @GetMapping("")
+    public String mainBusinessPage(){
+        return "businessMain";
     }
 }
