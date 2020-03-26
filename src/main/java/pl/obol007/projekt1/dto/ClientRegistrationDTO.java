@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.ToString;
 import pl.obol007.projekt1.domain.model.Address;
 
-import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

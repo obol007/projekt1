@@ -33,8 +33,9 @@ public class Business {
 //    @Column(nullable = false)
 //    private Boolean active = false;
     private Boolean visible = false;
-    @Column(nullable = false, unique = true)
-    @NIP
+
+    @Column(nullable = false)
+    //TODO: unique value of nip
     private String nip;
     @Column(nullable = false)
     String category;
@@ -45,8 +46,12 @@ public class Business {
     @ManyToOne
     private Address address;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "business")
     private List<Product> products;
+
+    public void addProduct(Product product){
+        products.add(product);
+    }
 
 
 

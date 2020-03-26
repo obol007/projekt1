@@ -33,11 +33,11 @@ public class RegistrationController {
         model.addAttribute("businessData", new BusinessRegistrationDTO());
         return "/business/businessRegistration";
     }
-//========================ALTERNATYWNA WERSJA============================//
-//        public String registrationPage(BusinessRegistrationDTO data){  //
-//            return "/registration/registration";                       //
-//        }                                                              //
-//=======================================================================//
+//========================ALTERNATYWNA WERSJA====================================//
+//        public String registrationPage(BusinessRegistrationDTO businessData){  //
+//            return "/registration/registration";                               //
+//        }                                                                      //
+//===============================================================================//
 
     @PostMapping("/businessRegistration")
     public String businessRegistering(@Valid @ModelAttribute("businessData")

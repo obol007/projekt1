@@ -8,13 +8,13 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString @EqualsAndHashCode(of="id")
+@Getter @Setter @ToString (exclude = "business") @EqualsAndHashCode(of="id")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     String name;
     @Column(nullable = false)
     String category;
@@ -23,5 +23,8 @@ public class Product {
     @Column(nullable = false)
     Integer quantity;
     String description;
+
+    @ManyToOne
+    Business business;
 
 }

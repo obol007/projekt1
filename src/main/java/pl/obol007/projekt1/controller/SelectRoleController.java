@@ -4,6 +4,7 @@ package pl.obol007.projekt1.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.obol007.projekt1.domain.model.Business;
 import pl.obol007.projekt1.domain.model.Client;
@@ -39,10 +40,12 @@ public class SelectRoleController {
         if (role.equals("BUSINESS")) {
             Business business = businessRepository.findByUserId(user.getId());
             model.addAttribute("business", business);
-            return "/business/businessMain";
+
+            return "business/businessMain";
         } else {
             Client client = clientRepository.findByUserId(user.getId());
             model.addAttribute("client", client);
+
             return "/client/clientMain";
         }
 

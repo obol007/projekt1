@@ -11,11 +11,54 @@
 <body>
 <h1>Business Page</h1>
 <security:authorize access="isAuthenticated()">
+    <form action="<c:url value="/logout"/>" method="post">
+        <input type="submit" value="Log out">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
 
 <p>Welcome, ${business.firstName} !</p>
-    <p>You are a business owner!</p>
+
+
+</br>
+    <p>Add a product:</p>
+    <form:form action="/product/add" method="get">
+        <input type="submit" value="ADD A PRODUCT"/>
+    </form:form>
+
+    <p>Product list:</p>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th colspan="2">Action</th>
+        </tr>
+    <c:forEach items="${business.products}" var="product">
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>${product.category}</td>
+            <td>${product.quantity}</td>
+            <td>${product.description}</td>
+            <td><form method="get" action="/product/edit/${product.id}">
+                <input type="submit" value="EDIT"/>
+            </form>
+            </td><td><form method="get" action="/product/delete/${product.id}">
+                <input type="submit" value="DELETE"/>
+            </form> </td>
+        </tr>
+    </c:forEach>
+    </table>
+
+
 
 </security:authorize>
+
+
+
+
 
 <%--    <security:authorize access="hasRole('ADMIN')">--%>
 <%--        <p>Witaj administratorze</p>--%>

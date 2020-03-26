@@ -39,7 +39,9 @@ public class BusinessRegistrationService {
         business.setBusinessName(businessData.getBusinessName());
         business.setFirstName(businessData.getFirstName());
         business.setLastName(businessData.getLastName());
+
         business.setNip(businessData.getNip());
+
         business.setCategory(businessData.getCategory());
 
         log.debug("Uzyskany obiekt użytkownika typu business: {}", business);

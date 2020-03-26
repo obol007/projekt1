@@ -31,19 +31,14 @@ public class ClientRegistrationService {
         log.debug("Dane do rejestracji klienta: {}",data);
 
         Client client = new Client();
-//        client.setActive(true);
         client.setAddress(data.getAddress());
         client.setEmail(data.getEmail());
         client.setFirstName(data.getFirstName());
         client.setLastName(data.getLastName());
-//        client.setUsername(data.getUsername());
-//        client.setPassword(passwordEncoder.encode(data.getPassword()));
 
         log.debug("Uzyskany obiekt użytkownika typu klient: {}", client);
 
         clientRepository.save(client);
-
-
 
         User user = new User();
 
@@ -55,8 +50,6 @@ public class ClientRegistrationService {
 
         client.setUser(user);
         clientRepository.save(client);
-
-
 
         log.debug("Zarejestrowany uzytkownik: {}", user);
         log.debug("Zarejestrowany klient: {}", client);

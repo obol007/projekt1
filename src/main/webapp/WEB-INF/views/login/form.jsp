@@ -10,10 +10,10 @@
 <body>
 <%--<c:if test="${param.get('error') != null}">--%>
 <c:if test="${param.error != null}">
-    <p>Błędne dane logowania!</p>
+    <p>Invalid credentials!</p>
 </c:if>
 <c:if test="${param.logout != null}">
-    <p>Zostałeś wylogowany!</p>
+    <p>You're logged out!</p>
 </c:if>
 
 <form method="post" action="/login">

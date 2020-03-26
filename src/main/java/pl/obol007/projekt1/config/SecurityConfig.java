@@ -51,18 +51,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
           .formLogin()
                 .loginPage("/login")
-                //kod nadmiarowy - username i password to domyslne parametry Spring Security
                 .usernameParameter("username")
                 .passwordParameter("password")
+//                .successForwardUrl("/selectRole")
 
                 //po zalogowaniu przechodzi na strone na ktora chcial wejsc
-                .defaultSuccessUrl("/selectRole")
+                .defaultSuccessUrl("/selectRole",true)
                 //po zalogowaniu trafiasz na strone glowna,
 //                .defaultSuccessUrl("/", true)
                 .and()
           .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/")
                 .and()
                 //formularz do zabezpieczenia przed wymuszaniem danych
            .csrf();

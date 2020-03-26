@@ -13,13 +13,13 @@ import java.security.Principal;
 public class HomePageController {
 
     @GetMapping
-    public String prepareHomePage(){
+    public String prepareHomePage(Principal principal, Model model){
 
 //        String username = principal.getName();
 //        model.addAttribute("username", username);
 
 //metoda statyczna, zadziala w kazdej klasie z realizacja żądania
-//        String username2 = SecurityContextHolder.getContext().getAuthentication().getName();
+//String username2 = SecurityContextHolder.getContext().getAuthentication().getName();
         return "/home/home";
     }
 }

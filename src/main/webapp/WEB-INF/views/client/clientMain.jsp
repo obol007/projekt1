@@ -1,5 +1,8 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +17,17 @@
     <section class="section">
     <div class="container">
         <h1 class="title">
-            Strona usera
+            User Page
         </h1>
         <p class="subtitle">
-            Welcome, <strong>${client.firstName}</strong>!
+            Welcome, <strong>${client.firstName}</strong>...
         </p>
     </div>
+
+        <form action="<c:url value="/logout"/>" method="post">
+            <input type="submit" value="Log out">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
 </section>
 </security:authorize>
 </body>
