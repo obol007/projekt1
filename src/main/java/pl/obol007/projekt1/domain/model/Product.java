@@ -24,6 +24,7 @@ public class Product {
     Integer quantity;
     String description;
 
+
     @ManyToOne
     Business business;
 

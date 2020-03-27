@@ -3,6 +3,7 @@ package pl.obol007.projekt1.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.obol007.projekt1.domain.model.Business;
 import pl.obol007.projekt1.domain.model.User;
@@ -24,6 +25,8 @@ public class BusinessController {
         this.businessRepository = businessRepository;
     }
 
+
+
     @GetMapping("/register")
     public String register() {
         return "/business/businessRegistration";
@@ -31,6 +34,7 @@ public class BusinessController {
 
     @GetMapping
     public String mainBusinessPage(Principal principal, Model model) {
+
         String username = principal.getName();
         User user = userRepository.findByUsername(username);
         Business business = businessRepository.findByUserId(user.getId());

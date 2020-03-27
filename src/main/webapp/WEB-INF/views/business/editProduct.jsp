@@ -13,11 +13,11 @@
 <form:form modelAttribute="product" method="post" action="/product/edit">
     <form:hidden path="id"/>
 
-    <p>Name: <form:input path="name"/> <form:errors path="name"/> </p>
-    <p>Price: <form:input path="price" value="${product.price}"/> <form:errors path="price"/> </p>
-    <p>Category: <form:input path="category" value="${product.category}"/> <form:errors path="category"/> </p>
-    <p>Quantity: <form:input path="quantity" value="${product.quantity}"/> <form:errors path="quantity"/> </p>
-    <p>Description: <form:input path="description" value="${product.description}"/> <form:errors path="description"/> </p>
+    <p><form:input path="name" placeholder="Name"/> <form:errors path="name"/> </p>
+    <p><form:input path="price" placeholder="Price"/> <form:errors path="price"/> </p>
+    <p><form:input path="category" placeholder="Category"/> <form:errors path="category"/> </p>
+    <p><form:input path="quantity" placeholder="Quantity"/> <form:errors path="quantity"/> </p>
+    <p><form:textarea path="description" placeholder="Description"/> <form:errors path="description"/> </p>
 
     <button type="submit">UPDATE</button>
 

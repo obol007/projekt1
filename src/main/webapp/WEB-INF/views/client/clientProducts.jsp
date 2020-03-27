@@ -23,9 +23,7 @@
 
             </p>
 
-            <form:form action="/address/add" method="get">
-                <input type="submit" value="ADD/EDIT CLIENT ADDRESS"/>
-            </form:form>
+
 
             <form action="<c:url value="/logout"/>" method="post">
                 <input type="submit" value="Log out">
@@ -34,44 +32,7 @@
 
         </div>
     </section>
-    <section class="section">
-        <div class="container">
 
-            <form:form method="get" action="/product/show/">
-                <input type="submit" value="SHOW AVAILABLE PRODUCTS"/>
-            </form:form>
-            <table border="1">
-                <c:forEach items="${products}" var="product">
-                    <tr>
-                        <th>Name</th>
-                        <th>Avarage Price</th>
-                    </tr>
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-            <br>
-
-            <p>Available product categories</p>
-            <table border="1">
-                <c:forEach items="${categories}" var="category">
-                    <tr>
-                        <th>Category</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>${category}</td>
-                        <td>
-                            <form:form method="get" action="/product/category/${category}">
-                                <input type="submit" value="SHOW PRODUCTS"/>
-                            </form:form>
-<%--                            <a href="/product/category/${category}">SHOW</a>--%>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
 
             <p>All products from ${productCategory.category}</p>
     <table border="1">

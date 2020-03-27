@@ -10,6 +10,8 @@ import pl.obol007.projekt1.dto.ProductDTO;
 import pl.obol007.projekt1.service.ProductService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -20,6 +22,13 @@ public class ProductController {
 
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @ModelAttribute("categories")
+    public List<String> getCategories(){
+        {
+            return Arrays.asList("fruits", "vegetables","nuts&seeds","grains","legumes&beans");
+        }
     }
 
     @GetMapping("/add")
@@ -49,7 +58,6 @@ public class ProductController {
     }
     @PostMapping("/edit")
     public String editingProduct(ProductDTO productDTO){
-        log.debug("ProduktDTO: "+productDTO.toString());
 
         productService.update(productDTO);
         return "redirect:/business";
@@ -66,5 +74,18 @@ public class ProductController {
         productService.remove(productDTO.getId());
         return "redirect:/business";
     }
+
+    @GetMapping("/show")
+    public String showProducts(Model model){
+        model.addAttribute("products",productService.findAll());
+        return "/client/clientMain";
+    }
+
+    @GetMapping("/category/{category}")
+    public String showProductByCategory(@PathVariable String category, Model model){
+        model.addAttribute("productCategory",productService.findByCategory(category));
+        return "/client/clientMain";
+    }
+
 
 }

@@ -25,5 +25,8 @@ public class User {
     private String role;
     @NotNull
     private Boolean active;
+    @OneToOne(mappedBy = "user")
+    private Address address;
+
 
 }

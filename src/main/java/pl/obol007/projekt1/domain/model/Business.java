@@ -28,10 +28,7 @@ public class Business {
     private String lastName;
     @Column(nullable = false, unique = true)
     private String email;
-//    @Column(nullable = false)
-//    private String password;
-//    @Column(nullable = false)
-//    private Boolean active = false;
+
     private Boolean visible = false;
 
     @Column(nullable = false)
@@ -43,15 +40,12 @@ public class Business {
     @OneToOne
     private User user;
 
-    @ManyToOne
-    private Address address;
+
 
     @OneToMany(mappedBy = "business")
     private List<Product> products;
 
-    public void addProduct(Product product){
-        products.add(product);
-    }
+
 
 
 

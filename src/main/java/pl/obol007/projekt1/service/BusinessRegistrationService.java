@@ -4,8 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.obol007.projekt1.domain.model.Address;
 import pl.obol007.projekt1.domain.model.Business;
 import pl.obol007.projekt1.domain.model.User;
+import pl.obol007.projekt1.domain.repositories.AddressRepository;
 import pl.obol007.projekt1.domain.repositories.BusinessRepository;
 import pl.obol007.projekt1.domain.repositories.UserRepository;
 import pl.obol007.projekt1.dto.BusinessRegistrationDTO;
@@ -20,11 +22,13 @@ public class BusinessRegistrationService {
     private final BusinessRepository businessRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final AddressRepository addressRepository;
 
-    public BusinessRegistrationService(BusinessRepository businessRepository, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public BusinessRegistrationService(BusinessRepository businessRepository, PasswordEncoder passwordEncoder, UserRepository userRepository, AddressRepository addressRepository) {
         this.businessRepository = businessRepository;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.addressRepository = addressRepository;
     }
 
 
@@ -32,9 +36,6 @@ public class BusinessRegistrationService {
 
         log.debug("Dane do rejestracji biznesu: {}",businessData);
         Business business = new Business();
-//        business.setUsername(data.getUsername());
-//        business.setPassword(passwordEncoder.encode(data.getPassword()));
-//        business.setActive(true);
         business.setEmail(businessData.getEmail());
         business.setBusinessName(businessData.getBusinessName());
         business.setFirstName(businessData.getFirstName());
@@ -50,10 +51,14 @@ public class BusinessRegistrationService {
 
 
         User user = new User();
+        Address address = new Address();
+        address.setUser(user);
+        addressRepository.save(address);
         user.setPassword(passwordEncoder.encode(businessData.getPassword()));
         user.setUsername(businessData.getUsername());
         user.setActive(true);
         user.setRole("BUSINESS");
+//        user.setAddress(address);
         userRepository.save(user);
 
         business.setUser(user);

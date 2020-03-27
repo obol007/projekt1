@@ -19,8 +19,8 @@ public class ProductDTO {
     @NotBlank
     String category;
     @NotNull
-    @Positive
-    double price;
+    @Min(0)
+    Double price;
     @Positive
     Integer quantity;
 

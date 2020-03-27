@@ -27,7 +27,6 @@ public class Client {
     @OneToOne
     User user;
 
-    @ManyToOne
-    Address address;
+
 
 }

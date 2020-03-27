@@ -10,6 +10,7 @@ import pl.obol007.projekt1.domain.repositories.BusinessRepository;
 import pl.obol007.projekt1.domain.repositories.ProductRepository;
 import pl.obol007.projekt1.dto.ProductDTO;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,10 +40,6 @@ public class ProductService {
         product.setBusiness(business);
         productRepository.save(product);
 
-//
-   //     business.addProduct(product);
-//
-//        businessRepository.save(business);
     }
 
     public ProductDTO findProductById(Long productId) {
@@ -64,13 +61,15 @@ public class ProductService {
     public void update(ProductDTO productDTO) {
         Optional<Product> optionalProduct = productRepository.findById(productDTO.getId());
         //TODO: why get is highlighted?
-        Product product = optionalProduct.get();
-        product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
-        product.setCategory(productDTO.getCategory());
-        product.setQuantity(productDTO.getQuantity());
-        product.setDescription(productDTO.getDescription());
-        productRepository.save(product);
+        if(optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            product.setName(productDTO.getName());
+            product.setPrice(productDTO.getPrice());
+            product.setCategory(productDTO.getCategory());
+            product.setQuantity(productDTO.getQuantity());
+            product.setDescription(productDTO.getDescription());
+            productRepository.save(product);
+        }
 
 
     }
@@ -80,6 +79,14 @@ public class ProductService {
         if (optionalProduct.isPresent()) {
             productRepository.deleteById(id);
         }
+    }
+
+    public List<Product> findAll(){
+        return productRepository.findAll();
+    }
+
+    public List<Product> findByCategory(String category) {
+        return productRepository.findAllByCategory(category);
     }
 }
 

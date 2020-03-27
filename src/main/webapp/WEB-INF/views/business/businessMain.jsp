@@ -6,21 +6,27 @@
 <html>
 <head>
     <title>Business Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 </head>
 <body>
-<h1>Business Page</h1>
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Welcome, ${business.firstName}...
+        </h1>
+
 <security:authorize access="isAuthenticated()">
     <form action="<c:url value="/logout"/>" method="post">
-        <input type="submit" value="Log out">
+        <input type="submit" value="LOG OUT">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 
-<p>Welcome, ${business.firstName} !</p>
+    <form:form action="/address/add" method="get">
+        <input type="submit" value="ADD/EDIT BUSINESS ADDRESS"/>
+    </form:form>
 
-
-</br>
-    <p>Add a product:</p>
     <form:form action="/product/add" method="get">
         <input type="submit" value="ADD A PRODUCT"/>
     </form:form>
@@ -35,29 +41,52 @@
             <th>Description</th>
             <th colspan="2">Action</th>
         </tr>
-    <c:forEach items="${business.products}" var="product">
+        <c:forEach items="${business.products}" var="product">
+            <tr>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.category}</td>
+                <td>${product.quantity}</td>
+                <td>${product.description}</td>
+                <td>
+                    <form method="get" action="/product/edit/${product.id}">
+                        <input type="submit" value="EDIT"/>
+                    </form>
+                </td>
+                <td>
+                    <form method="get" action="/product/delete/${product.id}">
+                        <input type="submit" value="DELETE"/>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+
+    <p>Company info:</p>
+    <table border="1">
         <tr>
-            <td>${product.name}</td>
-            <td>${product.price}</td>
-            <td>${product.category}</td>
-            <td>${product.quantity}</td>
-            <td>${product.description}</td>
-            <td><form method="get" action="/product/edit/${product.id}">
-                <input type="submit" value="EDIT"/>
-            </form>
-            </td><td><form method="get" action="/product/delete/${product.id}">
-                <input type="submit" value="DELETE"/>
-            </form> </td>
+            <th>Name</th>
+            <th>Address</th>
+            <th>NIP</th>
         </tr>
-    </c:forEach>
+        <tr>
+            <td>${business.businessName}</td>
+            <td>${business.user.address.street}
+                    ${business.user.address.buildingNumber},
+                    ${business.user.address.zipcode}
+                    ${business.user.address.city},
+                    ${business.user.address.country},
+            </td>
+            <td> ${business.nip}</td>
+        </tr>
+
     </table>
 
 
 
 </security:authorize>
-
-
-
+    </div>
+</section>
 
 
 <%--    <security:authorize access="hasRole('ADMIN')">--%>

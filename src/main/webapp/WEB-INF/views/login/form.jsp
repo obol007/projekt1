@@ -17,12 +17,16 @@
 </c:if>
 
 <form method="post" action="/login">
-    <p>Username: <input type="text" name="username"></p>
-    <p>Password: <input type="password" name="password"></p>
+    <p>Username</p>
+    <p><input type="text" name="username"></p>
+    <p>Password</p>
+    <p><input type="password" name="password"></p>
     <p><button type="submit">Log in</button> </p>
-
 <%--    kazdy formularz, ktory wysyla dane musi zawierac ten tag--%>
     <security:csrfInput/>
+</form>
+<form method="get" action="${pageContext.request.contextPath}/">
+    <button type="submit">MAIN PAGE</button>
 </form>
 
 </body>
