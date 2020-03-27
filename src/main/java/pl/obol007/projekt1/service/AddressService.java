@@ -19,12 +19,11 @@ public class AddressService {
     }
 
     public AddressDTO findAddress(Long id) {
-
+//getOne(id)
         AddressDTO addressDTO = new AddressDTO();
         Optional<Address> optionalAddress = addressRepository.findAddressByUserId(id);
         if (optionalAddress.isPresent()) {
             Address address = optionalAddress.get();
-            //TODO: can I do that? user.id = address.id
             addressDTO.setId(address.getId());
             addressDTO.setBuildingNumber(address.getBuildingNumber());
             addressDTO.setCity(address.getCity());

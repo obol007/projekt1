@@ -67,27 +67,29 @@
                             <form:form method="get" action="/product/category/${category}">
                                 <input type="submit" value="SHOW PRODUCTS"/>
                             </form:form>
-<%--                            <a href="/product/category/${category}">SHOW</a>--%>
+                                <%--                            <a href="/product/category/${category}">SHOW</a>--%>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
 
-            <p>All products from ${productCategory.category}</p>
-    <table border="1">
-        <c:forEach items="${productCategory}" var="categoryProduct">
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Address</th>
-            </tr>
-            <tr>
-                <td>${categoryProduct.name}</td>
-                <td>${categoryProduct.price}</td>
-                <td>${categoryProduct.business.user.address}</td>
-            </tr>
-        </c:forEach>
-    </table>
+            <c:if test="${choosenCategory != null}">
+                <p>All products from category: ${choosenCategory}</p>
+                <table border="1">
+                    <c:forEach items="${productCategory}" var="categoryProduct">
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Address</th>
+                        </tr>
+                        <tr>
+                            <td>${categoryProduct.name}</td>
+                            <td>${categoryProduct.price}</td>
+                            <td>${categoryProduct.business.user.address}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
 
 
         </div>

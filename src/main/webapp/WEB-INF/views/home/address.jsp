@@ -24,6 +24,7 @@
     <button type="reset">RESET</button>
 
 </form:form>
+<%--Choose role--%>
 <form:form method="get" action="/business">
     <button type="submit">CANCEL</button>
 </form:form>
