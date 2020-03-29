@@ -32,7 +32,7 @@ public class BusinessRegistrationDTO {
     private String password;
     private Boolean active = false;
     @NotBlank
-    private final String role = "BUSINESS";
+    private final String role = "ROLE_BUSINESS";
 
     private String firstName;
     private String lastName;

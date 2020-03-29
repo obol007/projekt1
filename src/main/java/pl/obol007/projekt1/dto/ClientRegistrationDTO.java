@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @ToString(exclude = "password")
 public class ClientRegistrationDTO {
 
-    private final String role = "CLIENT";
+    private final String role = "ROLE_CLIENT";
     @NotBlank
     String firstName;
     @NotBlank

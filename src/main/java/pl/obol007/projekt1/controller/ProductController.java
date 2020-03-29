@@ -83,7 +83,7 @@ public class ProductController {
 
     @GetMapping("/category/{category}")
     public String showProductByCategory(@PathVariable String category, Model model){
-        model.addAttribute("choosenCategory", category);
+        model.addAttribute("chosenCategory", category);
         model.addAttribute("productCategory",productService.findByCategory(category));
         return "/client/clientMain";
     }

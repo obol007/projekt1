@@ -13,8 +13,19 @@
         <p>Witaj zalogowany użytkowniku</p>
     </security:authorize>
 
+        <security:authorize access="hasRole('ROLE_BUSINESS')">
+            <p>For businesses...</p>
+        </security:authorize>
+ <security:authorize access="hasRole('ROLE_CLIENT')">
+            <p>For clients...</p>
+        </security:authorize>
+
 <security:authorize access="isAuthenticated()">
-    <p>Welcome back, <security:authentication property="name"/>
+    <p>Welcome back, <security:authentication property="name"/></p>
+
+        <p>Zalogowany jako: <security:authentication property="name"/></p>
+        <p>Posiada role: <security:authentication property="authorities"/></p>
+
 
     </br>
 

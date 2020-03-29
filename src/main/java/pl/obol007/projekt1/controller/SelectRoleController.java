@@ -49,7 +49,7 @@ public class SelectRoleController {
         String username = principal.getName();
         User user = userRepository.findByUsername(username);
         String role = user.getRole();
-        if (role.equals("BUSINESS")) {
+        if (role.equals("ROLE_BUSINESS")) {
             Business business = businessRepository.findByUserId(user.getId());
             model.addAttribute("business", business);
 

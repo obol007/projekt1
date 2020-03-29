@@ -37,22 +37,6 @@
     <section class="section">
         <div class="container">
 
-            <form:form method="get" action="/product/show/">
-                <input type="submit" value="SHOW AVAILABLE PRODUCTS"/>
-            </form:form>
-            <table border="1">
-                <c:forEach items="${products}" var="product">
-                    <tr>
-                        <th>Name</th>
-                        <th>Avarage Price</th>
-                    </tr>
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-            <br>
 
             <p>Available product categories</p>
             <table border="1">
@@ -67,25 +51,27 @@
                             <form:form method="get" action="/product/category/${category}">
                                 <input type="submit" value="SHOW PRODUCTS"/>
                             </form:form>
-                                <%--                            <a href="/product/category/${category}">SHOW</a>--%>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
 
-            <c:if test="${choosenCategory != null}">
-                <p>All products from category: ${choosenCategory}</p>
+            <c:if test="${chosenCategory != null}">
+                <p>All products from category: ${chosenCategory}</p>
                 <table border="1">
                     <c:forEach items="${productCategory}" var="categoryProduct">
                         <tr>
                             <th>Product</th>
-                            <th>Price</th>
-                            <th>Address</th>
+                            <th>Average Price</th>
+                            <th>The cheapest</th>
+                            <th>The closest</th>
+                            <th>All available</th>
+<%--                            <th>Address</th>--%>
                         </tr>
                         <tr>
                             <td>${categoryProduct.name}</td>
                             <td>${categoryProduct.price}</td>
-                            <td>${categoryProduct.business.user.address}</td>
+<%--                            <td>${categoryProduct.business.user.address}</td>--%>
                         </tr>
                     </c:forEach>
                 </table>
@@ -98,6 +84,25 @@
 </security:authorize>
 </body>
 </html>
+
+<%--------------------------SHOW ALL PRODUCTS----------------------------------------%>
+<%--            <form:form method="get" action="/product/show/">--%>
+<%--                <input type="submit" value="SHOW AVAILABLE PRODUCTS"/>--%>
+<%--            </form:form>--%>
+<%--            <table border="1">--%>
+<%--                <c:forEach items="${products}" var="product">--%>
+<%--                    <tr>--%>
+<%--                        <th>Name</th>--%>
+<%--                        <th>Avarage Price</th>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td>${product.name}</td>--%>
+<%--                        <td>${product.price}</td>--%>
+<%--                    </tr>--%>
+<%--                </c:forEach>--%>
+<%--            </table>--%>
+<%--            <br>--%>
+<%------------------------------------------------------------------------------------%>
 
 <%--<head>--%>
 <%--    <title>Home Page</title>--%>

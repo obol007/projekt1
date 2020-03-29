@@ -25,7 +25,7 @@
 
 </form:form>
 <%--Choose role--%>
-<form:form method="get" action="/business">
+<form:form method="get" action="/">
     <button type="submit">CANCEL</button>
 </form:form>
 

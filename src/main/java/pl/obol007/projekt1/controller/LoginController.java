@@ -34,7 +34,7 @@ public class LoginController {
             String username = principal.getName();
             User user = userRepository.findByUsername(username);
             String role = user.getRole();
-            if (role.equals("BUSINESS")) {
+            if (role.equals("ROLE_BUSINESS")) {
                 return "redirect:/business";
             } else {
 

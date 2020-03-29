@@ -45,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/register/*").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/business").hasAuthority("BUSINESS")
-                .antMatchers("/client").hasAuthority("CLIENT")
+                .antMatchers("/business").hasAuthority("ROLE_BUSINESS")
+                .antMatchers("/client").hasAuthority("ROLE_CLIENT")
                 .anyRequest().authenticated()
                 .and()
           .formLogin()
@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .successForwardUrl("/selectRole")
 
                 //po zalogowaniu przechodzi na strone na ktora chcial wejsc
-                .defaultSuccessUrl("/selectRole",true)
+                .defaultSuccessUrl("/",true)
                 //po zalogowaniu trafiasz na strone glowna,
 //                .defaultSuccessUrl("/", true)
                 .and()
